@@ -1,13 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import 'bulma/css/bulma.css';
+import Header from './components/Header';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NotFound from './components/NotFound';
+import AddAppointment from './components/AddAppointments';
+import ListAppointments from './components/ListAppointments';
+import SearchAppointments from './components/SearchAppointments';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <>
+  <Router>
+  <Header/>
+    <Switch>
+      <Route exact path="/">
+        <App />
+      </Route>
+      <Route path="/add_appointment">
+        <AddAppointment />
+      </Route>
+      <Route path="/search_appointment">
+        <SearchAppointments />
+      </Route>
+      <Route path="/list_appointment">
+        <ListAppointments />
+      </Route>
+      <Route path="*">
+        <NotFound/>
+      </Route>
+    </Switch>
+  </Router>
+  </>,
   document.getElementById('root')
 );
 
