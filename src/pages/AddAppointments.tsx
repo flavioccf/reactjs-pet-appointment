@@ -2,7 +2,9 @@ import React from 'react';
 
 function AddAppointment() {
     return (
-        <>Add Appointment</>
+        <>
+        <h1 className="title">Add Appointment</h1>
+        </>
     );
 }
 

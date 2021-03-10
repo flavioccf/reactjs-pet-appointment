@@ -1,14 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppointmentComp from '../components/AppointmentComp';
-import { HeaderContext } from '../components/Header';
 import { Appointment } from '../interfaces/Appointment';
-import { AppContext } from './App';
 
 function ListAppointments() {
     const [myAppointments, setMyAppointments] = useState([]);
-    const { isActiveMenu, toggleMenu } = useContext(HeaderContext);
-    const {test} = useContext(AppContext);
-    console.log(test);
 
     useEffect(() => {
       async function loadApt() {
@@ -29,6 +24,7 @@ function ListAppointments() {
   
     return (
       <>
+        <h1 className="title">List Appointments</h1>
         { myAppointments.length === 0 && <h1>No appointments at the moment...</h1> }
         { myAppointments.map((apt: Appointment, index: number) => {
           return <AppointmentComp key={index+apt.petName} {...apt}></AppointmentComp>

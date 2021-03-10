@@ -6,7 +6,7 @@ export default function NotFound() {
   
     return (
       <div>
-        <h3>
+        <h3 className="title">
           No match for <code>{location.pathname}</code>
         </h3>
       </div>

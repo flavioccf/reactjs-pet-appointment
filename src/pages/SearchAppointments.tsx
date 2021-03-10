@@ -2,7 +2,9 @@ import React from 'react';
 
 function SearchAppointments() {
     return (
-        <>Search Appointment</>
+        <>
+        <h1 className="title">Search Appointment</h1>
+        </>
     );
 }
 
