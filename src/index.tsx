@@ -1,19 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import App from './pages/App';
 import reportWebVitals from './reportWebVitals';
 import 'bulma/css/bulma.css';
 import Header from './components/Header';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import NotFound from './components/NotFound';
-import AddAppointment from './components/AddAppointments';
-import ListAppointments from './components/ListAppointments';
-import SearchAppointments from './components/SearchAppointments';
+import NotFound from './pages/NotFound';
+import AddAppointment from './pages/AddAppointments';
+import ListAppointments from './pages/ListAppointments';
+import SearchAppointments from './pages/SearchAppointments';
 
 ReactDOM.render(
   <>
   <Router>
   <Header/>
+    <div className="p-2">
     <Switch>
       <Route exact path="/">
         <App />
@@ -31,6 +32,7 @@ ReactDOM.render(
         <NotFound/>
       </Route>
     </Switch>
+    </div>
   </Router>
   </>,
   document.getElementById('root')
