@@ -3,8 +3,11 @@ import { Appointment } from '../interfaces/Appointment';
 import { FcFullTrash } from 'react-icons/fc';
 import { FaDog, FaUserAlt, FaCalendarDay } from 'react-icons/fa';
 import { DateTime } from 'luxon';
+import AppointmentApi from '../services/apt_api';
 
-const AppointmentComp: React.FC<Appointment> = (apt)  => {
+const api = new AppointmentApi();
+
+const AppointmentComp = ({apt, setAppointments, myAppointments} : {apt: Appointment, setAppointments: Function, myAppointments: Array<Appointment>})  => {
     let scheduledDate = DateTime.fromFormat(apt.aptDate,'yyyy-MM-dd hh:mm');
     return (
         <>
@@ -22,7 +25,9 @@ const AppointmentComp: React.FC<Appointment> = (apt)  => {
                 </div>
                 <div className="column">
                     <button className="button is-danger is-light is-medium is-pulled-right"
-                    onClick={() => {}}
+                    onClick={() => api.deleteAppointment(apt.id)
+                        .then(setAppointments(myAppointments.filter((o: Appointment) => o.id !== apt.id )))
+                    }
                     >
                     <span className="icon">
                         <FcFullTrash/>
