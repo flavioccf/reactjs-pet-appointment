@@ -1,7 +1,7 @@
 export interface Appointment {
-    id: number,
-    petName: string, 
-    ownerName: string, 
-    aptDate: string, 
-    aptNotes: string
-  }
+  id: string;
+  petName: string;
+  ownerName: string;
+  aptDate: string;
+  aptNotes: string;
+}
