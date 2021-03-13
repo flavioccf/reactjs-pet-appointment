@@ -1,14 +1,59 @@
 import React, { useReducer } from "react";
 import { Link } from "react-router-dom";
+import { Layout, Menu } from 'antd';
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+} from '@ant-design/icons';
 
-function reducer(isActiveMenu: string) {
-  return isActiveMenu === "is-active" ? "" : "is-active";
+const { Header, Sider, Content } = Layout;
+
+function reducer(isActiveMenu: boolean) {
+  return !isActiveMenu;
 }
 
-function Header() {
-  const [isActiveMenu = "", toggleMenu] = useReducer(reducer, "");
+function HeaderMenu() {
+  const [isActiveMenu, toggleMenu] = useReducer(reducer, false);
+  
   return (
     <>
+          <Layout>
+        <Sider trigger={null} collapsible collapsed={isActiveMenu}>
+          <div className="logo" />
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+            <Menu.Item key="1" icon={<UserOutlined />}>
+              nav 1
+            </Menu.Item>
+            <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+              nav 2
+            </Menu.Item>
+            <Menu.Item key="3" icon={<UploadOutlined />}>
+              nav 3
+            </Menu.Item>
+          </Menu>
+        </Sider>
+        <Layout className="site-layout">
+          <Header className="site-layout-background" style={{ padding: 0 }}>
+            {React.createElement(isActiveMenu ? MenuUnfoldOutlined : MenuFoldOutlined, {
+              className: 'trigger',
+              onClick: toggleMenu,
+            })}
+          </Header>
+          <Content
+            className="site-layout-background"
+            style={{
+              margin: '24px 16px',
+              padding: 24,
+              minHeight: 280,
+            }}
+          >
+            Content
+          </Content>
+        </Layout>
+      </Layout>
       <nav
         className="navbar is-fixed-top"
         role="navigation"
@@ -67,4 +112,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderMenu;

@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import App from "./pages/App";
 import reportWebVitals from "./reportWebVitals";
 import "bulma/css/bulma.css";
-import Header from "./components/Header";
+import 'antd/dist/antd.css';
+import HeaderMenu from "./components/Header";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import AddAppointment from "./pages/AddAppointments";
@@ -13,7 +14,7 @@ import SearchAppointments from "./pages/SearchAppointments";
 ReactDOM.render(
   <>
     <Router>
-      <Header />
+      <HeaderMenu />
       <div className="p-2">
         <Switch>
           <Route exact path="/">
