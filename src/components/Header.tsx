@@ -26,7 +26,7 @@ function HeaderMenu() {
         <Layout>
         <Sider trigger={null} collapsible collapsed={isActiveMenu}>
           <div className="logo" />
-          <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu theme="light" mode="inline" defaultSelectedKeys={['0']}>
           <Menu.Item key="0" icon={<HomeOutlined />}>
             <Link
               to="/"
