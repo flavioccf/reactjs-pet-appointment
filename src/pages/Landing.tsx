@@ -1,15 +1,15 @@
 import { PageHeader } from "antd";
 import React from "react";
 
-function SearchAppointments() {
+function Landing() {
   return (
     <>
     <PageHeader
     className="site-page-header"
-    title="Search Appointment"
+    title="Home Page"
     />
     </>
   );
 }
 
-export default SearchAppointments;
+export default Landing;

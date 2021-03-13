@@ -1,10 +1,13 @@
+import { PageHeader, Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import AppointmentComp from "../components/AppointmentComp";
 import { Appointment } from "../interfaces/Appointment";
 import AppointmentApi from "../services/apt_api";
+import { LoadingOutlined } from '@ant-design/icons';
 
 function ListAppointments() {
   const [myAppointments, setMyAppointments] = useState([]);
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
   useEffect(() => {
     const api = new AppointmentApi();
@@ -17,8 +20,11 @@ function ListAppointments() {
 
   return (
     <>
-      <h1 className="title">List Appointments</h1>
-      {myAppointments.length === 0 && <h1>No appointments at the moment...</h1>}
+    <PageHeader
+    className="site-page-header"
+    title="List Appointments"
+    />
+      {myAppointments.length === 0 && <Spin indicator={antIcon} />}
       {myAppointments.map((apt: Appointment, index: number) => {
         return (
           <AppointmentComp

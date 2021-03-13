@@ -1,13 +1,15 @@
 import React, { useReducer } from "react";
-import { Link } from "react-router-dom";
-import { Layout, Menu } from 'antd';
+import { Link, BrowserRouter as Router } from "react-router-dom";
+import { BackTop, Layout, Menu } from 'antd';
 import {
+  HomeOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
+  PlusCircleOutlined,
+  SearchOutlined,
+  UnorderedListOutlined,
 } from '@ant-design/icons';
+import Routes from "../routes/routes";
 
 const { Header, Sider, Content } = Layout;
 
@@ -20,18 +22,38 @@ function HeaderMenu() {
   
   return (
     <>
-          <Layout>
+     <Router>
+        <Layout>
         <Sider trigger={null} collapsible collapsed={isActiveMenu}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" icon={<UserOutlined />}>
-              nav 1
+          <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu.Item key="0" icon={<HomeOutlined />}>
+            <Link
+              to="/"
+            >
+              Home
+            </Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-              nav 2
+            <Menu.Item key="1" icon={<PlusCircleOutlined />}>
+            <Link
+              to="/add_appointment"
+            >
+              Add Appointments
+            </Link>
             </Menu.Item>
-            <Menu.Item key="3" icon={<UploadOutlined />}>
-              nav 3
+            <Menu.Item key="2" icon={<SearchOutlined />}>
+            <Link
+              to="/search_appointment"
+            >
+              Search Appointments
+            </Link>
+            </Menu.Item>
+            <Menu.Item key="3" icon={<UnorderedListOutlined />}>
+            <Link
+              to="/list_appointment"
+            >
+              List Appointments
+            </Link>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -50,64 +72,12 @@ function HeaderMenu() {
               minHeight: 280,
             }}
           >
-            Content
+            <Routes/>
           </Content>
         </Layout>
       </Layout>
-      <nav
-        className="navbar is-fixed-top"
-        role="navigation"
-        aria-label="main navigation"
-      >
-        <div className="navbar-brand">
-          <Link to="/" className="navbar-item">
-            <img
-              alt=""
-              src="https://bulma.io/images/bulma-logo.png"
-              width="112"
-              height="28"
-            ></img>
-          </Link>
-          <span
-            onClick={toggleMenu}
-            role="button"
-            className={`navbar-burger ${isActiveMenu}`}
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasicExample"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </span>
-        </div>
-        <div id="navbarBasicExample" className={`navbar-menu ${isActiveMenu}`}>
-          <div className="navbar-start">
-            <Link
-              onClick={toggleMenu}
-              to="/add_appointment"
-              className="navbar-item"
-            >
-              Add Appointments
-            </Link>
-            <Link
-              onClick={toggleMenu}
-              to="/search_appointment"
-              className="navbar-item"
-            >
-              Search Appointments
-            </Link>
-            <Link
-              onClick={toggleMenu}
-              to="/list_appointment"
-              className="navbar-item"
-            >
-              List Appointments
-            </Link>
-          </div>
-        </div>
-      </nav>
-      <div className="m-5 p-5"></div>
+      </Router>
+      <BackTop />
     </>
   );
 }

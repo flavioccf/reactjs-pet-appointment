@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Appointment } from "../interfaces/Appointment";
 import { v4 as uuidv4 } from "uuid";
 import { DateTime } from "luxon";
-import bulmaCalendar from 'bulma-calendar';
-import { DatePicker } from 'antd';
+import { Button, Checkbox, DatePicker, Form, Input, PageHeader, TimePicker } from 'antd';
 import "bulma-calendar/dist/css/bulma-calendar.min.css";
 import moment from "moment";
 
@@ -18,7 +17,13 @@ function AddAppointment() {
     aptNotes: "",
   };
   const [newAppointment, setNewAppointment] = useState(initAppointment);
-  
+  const onFinish = (values: any) => {
+    console.log('Success:', values);
+  };
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
+  };
 
   useEffect(() => {
     setNewAppointment(prevState => ({
@@ -27,80 +32,55 @@ function AddAppointment() {
     }))
   },[date,time]);
 
-  useEffect(() => {
-    const calendars = bulmaCalendar.attach('[id="aptDate"]', {
-      showHeader: false,
-      displayMode: 'inline',
-      type: 'date',
-      dateFormat: 'YYYY-MM-DD',
-      minDate: new Date(Date.now()),
-      startDate: new Date(date)
-    });
-    for(var i = 0; i < calendars.length; i++) {
-      // Add listener to select event
-      calendars[i].on('select', date => {
-        console.log(date);
-      });
-    }
-    bulmaCalendar.attach('[type="time"]', {
-      displayMode: 'inline',
-      type: 'time',
-      timeFormat: 'hh:mm',
-      startTime: new Date(time)
-    });
-    const elementDate = document.querySelector('#aptDate') as any;
-    
-    if (elementDate.bulmaCalendar) {
-      console.log(elementDate.bulmaCalendar);
-      // bulmaCalendar instance is available as elementDate.bulmaCalendar
-      elementDate.bulmaCalendar.on('select', function(datepicker: { data: { value: () => any; }; }) {
-        console.log(elementDate);
-        setDate(datepicker.data.value());
-      });
-    }
-    const elementTime = document.querySelector('#aptTime') as any;
-    if (elementTime.bulmaCalendar) {
-      // bulmaCalendar instance is available as elementTime.bulmaCalendar
-      elementTime.bulmaCalendar.on('select', function(datepicker: { data: { value: () => any; }; }) {
-        setTime(datepicker.data.value());
-      });
-    }
-  }, []);
-
   return (
     <>
-      <h1 className="title">Add Appointment</h1>
-      <hr></hr>
-      <div className="field">
-      <label className="label">Pet Name</label>
-      <div className="control">
-        <input className="input" type="text" placeholder="Text input"></input>
-        </div>
-      </div>
-      <div className="field">
-      <label className="label">Owner Name</label>
-      <div className="control">
-        <input className="input" type="text" placeholder="Text input"></input>
-        </div>
-      </div>
-      <div className="field">
-      <label className="label">Appointment Notes</label>
-      <div className="control">
-        <textarea className="textarea" placeholder="Textarea"></textarea>
-      </div>
-    </div>
-    <div className="columns">
-    <div className="column is-half field">
-    <label className="label">Date</label>
-    <input id="aptDate" name="aptDate" type="date" ></input>
-    </div>
-    <div className="column is-half field">
-    <label className="label">Time</label>
-    <input id="aptTime" name="aptTime" type="time" value={time} onChange={(e) => { console.log(e) }}></input>
-    </div>
-    </div>
-    <DatePicker defaultValue={moment(date, 'YYYY-MM-DD')} format="YYYY-MM-DD" onChange={(e) => {console.log(e)}}></DatePicker>
-    </>
+    <PageHeader
+    className="site-page-header"
+    title="Add Appointment"
+    />
+    <Form
+      layout="vertical"
+      name="basic"
+      initialValues={{ remember: true }}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+    >
+      <Form.Item
+        label="Username"
+        name="username"
+        rules={[{ required: true, message: 'Please input your username!' }]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[{ required: true, message: 'Please input your password!' }]}
+      >
+        <Input.Password />
+      </Form.Item>
+      <Form.Item 
+        label="Appointment Date"
+        name="aptDate"
+        style={{ display: 'inline-block', width: 'calc(50% - 8px)' }}
+      >
+        <DatePicker defaultValue={moment(date, 'YYYY-MM-DD')} format="YYYY-MM-DD" onChange={(e) => {console.log(e)}}></DatePicker>
+      </Form.Item>
+      <Form.Item 
+        label="Appointment Time"
+        name="aptTime"
+        style={{ display: 'inline-block', width: 'calc(50% - 8px)' }}
+      >
+        <TimePicker defaultValue={moment(time, 'HH:mm')} format="HH:mm" onChange={(e) => {console.log(e)}}></TimePicker>
+      </Form.Item>
+      <Form.Item>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
+     </>
   );
 }
 
