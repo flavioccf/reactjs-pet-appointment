@@ -1,10 +1,8 @@
-import React from 'react';
-import HeaderMenu from './components/Header';
+import React from "react";
+import HeaderMenu from "./components/Header";
 
 function App() {
-  return (
-    <HeaderMenu/>
-  );
+  return <HeaderMenu />;
 }
 
 export default App;

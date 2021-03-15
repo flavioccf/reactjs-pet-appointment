@@ -6,7 +6,7 @@ const URL: string = process.env.REACT_APP_URL!;
 class AppointmentApi {
   async getAppointmentList() {
     return await axios
-      .get(URL+'?_sort=aptDate&_order=desc')
+      .get(URL + "?_sort=aptDate&_order=desc")
       .then(async (res) => {
         const result = await res.data;
         const apts = result.map((item: object, i: number) => {
@@ -29,11 +29,11 @@ class AppointmentApi {
 
   async createAppointment(appointment: Appointment) {
     return await axios
-    .post(URL, appointment)
-    .then(async (res) => res)
-    .catch((error) => {
+      .post(URL, appointment)
+      .then(async (res) => res)
+      .catch((error) => {
         throw new Error(error);
-    });
+      });
   }
 }
 

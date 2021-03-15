@@ -28,8 +28,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "predeploy":"yarn build",
-    "deploy":"gh-pages -d build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "start-prev": "react-scripts start",
     "start": "concurrently \"react-scripts start\" \"json-server --watch db.json --port 8080\"",
     "build": "react-scripts build",

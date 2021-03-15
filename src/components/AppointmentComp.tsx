@@ -20,9 +20,9 @@ const AppointmentComp = ({
   let scheduledDate = DateTime.fromFormat(apt.aptDate, "yyyy-MM-dd hh:mm");
   return (
     <>
-    <Card type="inner" title="Inner Card title" extra={<a href="#">More</a>}>
-      Inner Card content
-    </Card>
+      <Card type="inner" title="Inner Card title" extra={<a href="#">More</a>}>
+        Inner Card content
+      </Card>
       <div className="box">
         <div className="columns is-vcentered">
           <div className="column is-three-quarters">

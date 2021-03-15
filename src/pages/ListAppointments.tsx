@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import AppointmentComp from "../components/AppointmentComp";
 import { Appointment } from "../interfaces/Appointment";
 import AppointmentApi from "../services/apt_api";
-import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined } from "@ant-design/icons";
 
 function ListAppointments() {
   const [myAppointments, setMyAppointments] = useState([]);
@@ -20,15 +20,17 @@ function ListAppointments() {
 
   return (
     <>
-    <PageHeader
-    className="site-page-header"
-    title="List Appointments"
-    />
-      {myAppointments.length === 0 && <Spin style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
-      }} indicator={antIcon} />}
+      <PageHeader className="site-page-header" title="List Appointments" />
+      {myAppointments.length === 0 && (
+        <Spin
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+          indicator={antIcon}
+        />
+      )}
       {myAppointments.map((apt: Appointment, index: number) => {
         return (
           <AppointmentComp

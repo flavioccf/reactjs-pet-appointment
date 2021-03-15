@@ -4,10 +4,7 @@ import React from "react";
 function SearchAppointments() {
   return (
     <>
-    <PageHeader
-    className="site-page-header"
-    title="Search Appointment"
-    />
+      <PageHeader className="site-page-header" title="Search Appointment" />
     </>
   );
 }
