@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Appointment } from "../interfaces/Appointment";
 import { v4 as uuidv4 } from "uuid";
 import { DateTime } from "luxon";
-import { Button, Checkbox, Col, DatePicker, Form, Input, PageHeader, Row, TimePicker } from 'antd';
+import { Alert, Button, Checkbox, Col, DatePicker, Form, Input, PageHeader, Row, TimePicker } from 'antd';
 import "bulma-calendar/dist/css/bulma-calendar.min.css";
 import moment from "moment";
+import AppointmentApi from '../services/apt_api';
 
 function AddAppointment() {
   const [date, setDate] = useState(DateTime.now().toISODate());
@@ -16,17 +17,32 @@ function AddAppointment() {
     aptDate: `${date} ${time}`,
     aptNotes: "",
   };
+
+  const closeMessageForm = () => {
+    setTimeout(() => setMessageForm(null), 5000);
+  }
+  
   const [newAppointment, setNewAppointment] = useState(initAppointment);
+  const [messageForm, setMessageForm] = useState<any>();
   const onFinish = (values: any) => {
     console.log('Success:', newAppointment);
+    const api = new AppointmentApi();
+    api.createAppointment(newAppointment).then(res => {
+      console.log(res);
+      if(res.status === 201) {
+        setMessageForm(<Alert message="Appointment Created!" type="success" banner showIcon closable/>);
+        closeMessageForm();
+      }
+    });
+  };
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
+    setMessageForm(<Alert message="Fill all necessary fields" type="error" banner showIcon closable/>);
+    closeMessageForm();
   };
   const colLayout = {
     padding: "0.5rem"
   }
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const name = event.target.name;
@@ -46,6 +62,7 @@ function AddAppointment() {
 
   return (
     <>
+    { messageForm }
     <PageHeader
     className="site-page-header"
     title="Add Appointment"

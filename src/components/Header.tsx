@@ -1,33 +1,39 @@
-import React, { useReducer } from "react";
+import React, { useState } from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
 import { BackTop, Layout, Menu } from 'antd';
 import {
   HomeOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
   PlusCircleOutlined,
   SearchOutlined,
   UnorderedListOutlined,
+  MenuOutlined,
+  CloseOutlined
 } from '@ant-design/icons';
 import Routes from "../routes/routes";
 
-const { Header, Sider, Content } = Layout;
+const { Header, Sider, Content } = Layout;      
 
-function reducer(isActiveMenu: boolean) {
-  return !isActiveMenu;
-}
-
-function HeaderMenu() {
-  const [isActiveMenu, toggleMenu] = useReducer(reducer, false);
-  
+function HeaderMenu() { 
+  const [menuTrigger, setMenuTrigger] = useState(<MenuOutlined />);
   return (
     <>
      <Router>
         <Layout>
-        <Sider trigger={null} collapsible collapsed={isActiveMenu}>
+        <Sider
+          breakpoint="lg"
+          collapsedWidth="0"
+          onBreakpoint={broken => {
+            console.log(broken);
+          }}
+          onCollapse={(collapsed, type) => {
+            console.log(collapsed, type);
+            setMenuTrigger(collapsed ?  <MenuOutlined /> : <CloseOutlined />);
+          }}
+          trigger={menuTrigger}
+        >
           <div className="logo" />
           <Menu theme="light" mode="inline" defaultSelectedKeys={['0']}>
-          <Menu.Item key="0" icon={<HomeOutlined />}>
+          <Menu.Item key="0" icon={<HomeOutlined/>}>
             <Link
               to="/"
             >
@@ -59,10 +65,7 @@ function HeaderMenu() {
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }}>
-            {React.createElement(isActiveMenu ? MenuUnfoldOutlined : MenuFoldOutlined, {
-              className: 'trigger',
-              onClick: toggleMenu,
-            })}
+            Pet Appointment
           </Header>
           <Content
             className="site-layout-background"

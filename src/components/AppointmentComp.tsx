@@ -4,6 +4,7 @@ import { FcFullTrash } from "react-icons/fc";
 import { FaDog, FaUserAlt, FaCalendarDay } from "react-icons/fa";
 import { DateTime } from "luxon";
 import AppointmentApi from "../services/apt_api";
+import { Card } from "antd";
 
 const api = new AppointmentApi();
 
@@ -19,6 +20,9 @@ const AppointmentComp = ({
   let scheduledDate = DateTime.fromFormat(apt.aptDate, "yyyy-MM-dd hh:mm");
   return (
     <>
+    <Card type="inner" title="Inner Card title" extra={<a href="#">More</a>}>
+      Inner Card content
+    </Card>
       <div className="box">
         <div className="columns is-vcentered">
           <div className="column is-three-quarters">

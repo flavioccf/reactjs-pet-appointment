@@ -8,13 +8,6 @@
       "aptNotes": "This Chihuahua has not eaten for three days and is lethargic"
     },
     {
-      "id": "3c11d94d-db4d-4af1-9403-af93dbd67558",
-      "petName": "Buffy",
-      "ownerName": "Hassum Harrod",
-      "aptDate": "2016-06-20 15:30",
-      "aptNotes": "This Chihuahua has not eaten for three days and is lethargic"
-    },
-    {
       "id": "76a15eec-8f94-431b-90ea-c85af220a477",
       "petName": "Buffy",
       "ownerName": "Hassum Harrod",
@@ -27,6 +20,27 @@
       "ownerName": "Hassum Harrod",
       "aptDate": "2016-06-20 15:30",
       "aptNotes": "This Chihuahua has not eaten for three days and is lethargic"
+    },
+    {
+      "id": "f3e3e822-35cd-4d6c-bf0e-808a2e827348",
+      "petName": "Chewbacca",
+      "ownerName": "Flavio",
+      "aptDate": "2021-03-15 15:00",
+      "aptNotes": "Testing input"
+    },
+    {
+      "id": "915b8043-855c-4e8e-84a4-c86569dadb9e",
+      "petName": "Max",
+      "ownerName": "Matthew",
+      "aptDate": "2021-03-25 23:50",
+      "aptNotes": "Test"
+    },
+    {
+      "id": "65028a19-44ad-48d6-bb6e-81516f26e2d7",
+      "petName": "Apollo",
+      "ownerName": "Homer",
+      "aptDate": "2021-03-27 23:55",
+      "aptNotes": ""
     }
   ]
 }

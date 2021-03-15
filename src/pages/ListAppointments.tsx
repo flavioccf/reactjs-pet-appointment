@@ -24,7 +24,11 @@ function ListAppointments() {
     className="site-page-header"
     title="List Appointments"
     />
-      {myAppointments.length === 0 && <Spin indicator={antIcon} />}
+      {myAppointments.length === 0 && <Spin style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+      }} indicator={antIcon} />}
       {myAppointments.map((apt: Appointment, index: number) => {
         return (
           <AppointmentComp
