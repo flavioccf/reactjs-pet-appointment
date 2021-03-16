@@ -1,6 +1,6 @@
 {
-  "homepage": ".",
-  "name": "react-pet-appointment",
+  "homepage": "https://flavioccf.github.io/reactjs-pet-appointment",
+  "name": "reactjs-pet-appointment",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
