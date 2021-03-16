@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "./static/css/main.dfd4f5df.chunk.css",
-    "main.js": "./static/js/main.05eb65d2.chunk.js",
-    "main.js.map": "./static/js/main.05eb65d2.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.4664a9ba.js",
-    "runtime-main.js.map": "./static/js/runtime-main.4664a9ba.js.map",
-    "static/css/2.f6643f1c.chunk.css": "./static/css/2.f6643f1c.chunk.css",
-    "static/js/2.944d7761.chunk.js": "./static/js/2.944d7761.chunk.js",
-    "static/js/2.944d7761.chunk.js.map": "./static/js/2.944d7761.chunk.js.map",
-    "static/js/3.2104cf09.chunk.js": "./static/js/3.2104cf09.chunk.js",
-    "static/js/3.2104cf09.chunk.js.map": "./static/js/3.2104cf09.chunk.js.map",
-    "index.html": "./index.html",
-    "static/css/2.f6643f1c.chunk.css.map": "./static/css/2.f6643f1c.chunk.css.map",
-    "static/css/main.dfd4f5df.chunk.css.map": "./static/css/main.dfd4f5df.chunk.css.map",
-    "static/js/2.944d7761.chunk.js.LICENSE.txt": "./static/js/2.944d7761.chunk.js.LICENSE.txt"
+    "main.css": "/reactjs-pet-appointment/static/css/main.dfd4f5df.chunk.css",
+    "main.js": "/reactjs-pet-appointment/static/js/main.90105a5d.chunk.js",
+    "main.js.map": "/reactjs-pet-appointment/static/js/main.90105a5d.chunk.js.map",
+    "runtime-main.js": "/reactjs-pet-appointment/static/js/runtime-main.c08d1496.js",
+    "runtime-main.js.map": "/reactjs-pet-appointment/static/js/runtime-main.c08d1496.js.map",
+    "static/css/2.f6643f1c.chunk.css": "/reactjs-pet-appointment/static/css/2.f6643f1c.chunk.css",
+    "static/js/2.7ca1765f.chunk.js": "/reactjs-pet-appointment/static/js/2.7ca1765f.chunk.js",
+    "static/js/2.7ca1765f.chunk.js.map": "/reactjs-pet-appointment/static/js/2.7ca1765f.chunk.js.map",
+    "static/js/3.2d8ddf3b.chunk.js": "/reactjs-pet-appointment/static/js/3.2d8ddf3b.chunk.js",
+    "static/js/3.2d8ddf3b.chunk.js.map": "/reactjs-pet-appointment/static/js/3.2d8ddf3b.chunk.js.map",
+    "index.html": "/reactjs-pet-appointment/index.html",
+    "static/css/2.f6643f1c.chunk.css.map": "/reactjs-pet-appointment/static/css/2.f6643f1c.chunk.css.map",
+    "static/css/main.dfd4f5df.chunk.css.map": "/reactjs-pet-appointment/static/css/main.dfd4f5df.chunk.css.map",
+    "static/js/2.7ca1765f.chunk.js.LICENSE.txt": "/reactjs-pet-appointment/static/js/2.7ca1765f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.4664a9ba.js",
+    "static/js/runtime-main.c08d1496.js",
     "static/css/2.f6643f1c.chunk.css",
-    "static/js/2.944d7761.chunk.js",
+    "static/js/2.7ca1765f.chunk.js",
     "static/css/main.dfd4f5df.chunk.css",
-    "static/js/main.05eb65d2.chunk.js"
+    "static/js/main.90105a5d.chunk.js"
   ]
 }
