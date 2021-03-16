@@ -1,8 +1,10 @@
 @import "~antd/dist/antd.css";
 
 .ant-layout {
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
+
 .ant-layout-sider-children {
   background-color: #fff;
 }
@@ -32,4 +34,29 @@
 
 .site-layout .site-layout-background {
   background: #fff;
+}
+
+@media (max-width: 992px) {
+  .sliderConfig .ant-layout-sider {
+    z-index: 999;
+    height: 100vh;
+    border-right: 1px solid #f0f0f0;
+    min-width: 100% !important;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .sliderConfig .ant-layout-sider-children {
+    max-width: 200px;
+    min-width: 200px;
+  }
+  .sliderConfig .ant-layout-sider-zero-width-trigger {
+    left: 200px;
+  }
+  .sliderConfig .site-layout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100% !important;
+    z-index: 1;
+  }
 }

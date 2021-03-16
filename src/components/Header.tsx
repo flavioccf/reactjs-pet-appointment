@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
 import { BackTop, Layout, Menu } from "antd";
 import {
@@ -15,10 +15,11 @@ const { Header, Sider, Content } = Layout;
 
 function HeaderMenu() {
   const [menuTrigger, setMenuTrigger] = useState(<MenuOutlined />);
+  const [sliderResponsive, setSliderResponsive] = useState("");
   return (
     <>
       <Router>
-        <Layout>
+        <Layout className={sliderResponsive}>
           <Sider
             breakpoint="lg"
             collapsedWidth="0"
@@ -28,6 +29,7 @@ function HeaderMenu() {
             onCollapse={(collapsed, type) => {
               console.log(collapsed, type);
               setMenuTrigger(collapsed ? <MenuOutlined /> : <CloseOutlined />);
+              setSliderResponsive(collapsed ? "" : "sliderConfig");
             }}
             trigger={menuTrigger}
           >

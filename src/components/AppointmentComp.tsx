@@ -1,10 +1,13 @@
-import React from "react";
 import { Appointment } from "../interfaces/Appointment";
-import { FcFullTrash } from "react-icons/fc";
-import { FaDog, FaUserAlt, FaCalendarDay } from "react-icons/fa";
+import {
+  CalendarTwoTone,
+  UserOutlined,
+  DeleteTwoTone,
+  EditTwoTone,
+} from "@ant-design/icons";
 import { DateTime } from "luxon";
 import AppointmentApi from "../services/apt_api";
-import { Card } from "antd";
+import { Avatar, Divider, List, Skeleton, Tooltip } from "antd";
 
 const api = new AppointmentApi();
 
@@ -20,31 +23,14 @@ const AppointmentComp = ({
   let scheduledDate = DateTime.fromFormat(apt.aptDate, "yyyy-MM-dd hh:mm");
   return (
     <>
-      <Card type="inner" title="Inner Card title" extra={<a href="#">More</a>}>
-        Inner Card content
-      </Card>
-      <div className="box">
-        <div className="columns is-vcentered">
-          <div className="column is-three-quarters">
-            <ul>
-              <li>
-                <h3 className="title is-3">
-                  <FaDog /> {apt.petName}
-                </h3>
-                <hr></hr>
-              </li>
-              <li>
-                <FaUserAlt /> Owner: {apt.ownerName}
-              </li>
-              <li>
-                <FaCalendarDay /> Date:{" "}
-                {scheduledDate.toLocaleString(DateTime.DATETIME_SHORT)}
-              </li>
-            </ul>
-          </div>
-          <div className="column">
-            <button
-              className="button is-danger is-light is-medium is-pulled-right"
+      <List.Item
+        actions={[
+          <Tooltip title="Edit appointment">
+            <EditTwoTone />
+          </Tooltip>,
+          <Tooltip title="Delete appointment">
+            <DeleteTwoTone
+              twoToneColor="red"
               onClick={() =>
                 api
                   .deleteAppointment(apt.id)
@@ -54,14 +40,28 @@ const AppointmentComp = ({
                     )
                   )
               }
-            >
-              <span className="icon">
-                <FcFullTrash />
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
+            ></DeleteTwoTone>
+          </Tooltip>,
+        ]}
+      >
+        <Skeleton avatar title={false} loading={false} active>
+          <List.Item.Meta
+            avatar={<Avatar icon={<UserOutlined />} />}
+            title={
+              <>
+                Pet: {apt.petName}
+                <br></br>
+                Owner: {apt.ownerName}
+                <br></br>
+                <CalendarTwoTone /> Date:{" "}
+                {scheduledDate.toLocaleString(DateTime.DATETIME_SHORT)}
+              </>
+            }
+            description={apt.aptNotes}
+          />
+        </Skeleton>
+      </List.Item>
+      <Divider />
     </>
   );
 };
