@@ -18,6 +18,7 @@
     "dotenv": "^8.2.0",
     "json-server": "^0.16.3",
     "luxon": "^1.26.0",
+    "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",

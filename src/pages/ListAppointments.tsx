@@ -1,23 +1,28 @@
 import { Input, PageHeader, Select, Spin } from "antd";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AppointmentComp from "../components/AppointmentComp";
 import { Appointment } from "../interfaces/Appointment";
 import AppointmentApi from "../services/apt_api";
-import { LoadingOutlined } from "@ant-design/icons";
+import { LoadingOutlined, SortAscendingOutlined, SortDescendingOutlined } from "@ant-design/icons";
 import { SearchOptions } from "../interfaces/SearchOptions";
+import UpdateModalComp from "../components/UpdateModalComp";
 
 function ListAppointments() {
+  const childRef = useRef();
   const [myAppointments, setMyAppointments] = useState([]);
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-  const api = new AppointmentApi();
   const initSearch: SearchOptions = {
     sort: "aptDate",
     order: "desc",
     filter: "",
   };
+
+  console.log(childRef.current);
+
   const [searchParams, setSearchParam] = useState(initSearch);
 
   useEffect(() => {
+    const api = new AppointmentApi();
     const loadApt = async () => {
       const apts = await api.getAppointmentList(searchParams);
       setMyAppointments(apts);
@@ -32,14 +37,28 @@ function ListAppointments() {
       <Input
         addonAfter={
           <>
-            <Select placeholder="Sort By" className="select-before">
-              <Select.Option value="http://">http://</Select.Option>
-              <Select.Option value="http://">http://</Select.Option>
-              <Select.Option value="https://">https://</Select.Option>
+            <Select placeholder="Sort By" className="select-before"
+              onSelect={(e) => {
+                setSearchParam((prevState) => ({
+                  ...prevState,
+                  sort: e.toString(),
+                }))
+              }}
+            >
+              <Select.Option value="petName">Pet</Select.Option>
+              <Select.Option value="ownerName">Owner</Select.Option>
+              <Select.Option value="aptDate">Date</Select.Option>
             </Select>
-            <Select defaultValue="asc" className="select-before">
-              <Select.Option value="asc">asc</Select.Option>
-              <Select.Option value="desc">desc</Select.Option>
+            <Select defaultValue="desc" className="select-before"
+              onSelect={(e) => {
+                setSearchParam((prevState) => ({
+                  ...prevState,
+                  order: e.toString(),
+                }))
+              }}
+            >
+              <Select.Option value="asc">Asc <SortAscendingOutlined /></Select.Option>
+              <Select.Option value="desc">Desc <SortDescendingOutlined /></Select.Option>
             </Select>
           </>
         }
@@ -72,6 +91,8 @@ function ListAppointments() {
           ></AppointmentComp>
         );
       })}
+
+      <UpdateModalComp ref={childRef}/>
     </>
   );
 }
