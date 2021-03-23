@@ -1,15 +1,17 @@
 import { PageHeader, Spin } from "antd";
-import { createRef, useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import AppointmentComp from "../components/AppointmentComp";
 import { Appointment } from "../interfaces/Appointment";
-import AppointmentApi from "../services/apt_api";
 import { LoadingOutlined } from "@ant-design/icons";
 import UpdateModalComp from "../components/UpdateModalComp";
 import SearchAppointmentsComp from "../components/SearchAppointmentsComp";
-import { SearchOptions } from "../interfaces/SearchOptions";
 
 function ListAppointments() {
   const childRef = useRef();
+  console.log(childRef);
+  if(childRef instanceof Object) {
+    
+  }
   const [myAppointments, setMyAppointments] = useState<Array<Appointment>>([]);
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -36,6 +38,7 @@ function ListAppointments() {
             apt={apt}
             setAppointments={setMyAppointments}
             myAppointments={myAppointments}
+            modalFunctions={childRef.current}
           ></AppointmentComp>
         );
       })}

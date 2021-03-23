@@ -1,18 +1,34 @@
-import { Modal, Button } from 'antd';
-import { forwardRef, useImperativeHandle, useState } from 'react';
+import { Modal } from 'antd';
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import { Appointment } from '../interfaces/Appointment';
 
 const UpdateModalComp = forwardRef((props,ref) => {
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState('Content of the modal');
+  const initAppointmentInfo = {
+    id: "",
+    petName: "",
+    ownerName: "",
+    aptDate: "",
+    aptNotes: "",
+  }
+  const [appointmentInfo, setAppointmentInfo] = useState<Appointment>(initAppointmentInfo);
 
   const showModal = () => {
     setVisible(true);
   };
 
-//   useImperativeHandle(ref,() => {
-//       return showModal();
-//   })
+  const setAppointmentModal = (appointment: Appointment) => {
+    console.log(appointment);
+  }
+
+  useImperativeHandle(ref,() => {
+      return {
+        openModal: showModal,
+        setAppointmentModal: setAppointmentModal
+      };
+  })
 
   const handleOk = () => {
     setModalText('The modal will be closed after two seconds');
@@ -28,11 +44,11 @@ const UpdateModalComp = forwardRef((props,ref) => {
     setVisible(false);
   };
 
+  useEffect(() => {
+  },[appointmentInfo]);
+
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal with async logic
-      </Button>
       <Modal
         title="Title"
         visible={visible}

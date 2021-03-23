@@ -4,7 +4,6 @@ import { BackTop, Layout, Menu } from "antd";
 import {
   HomeOutlined,
   PlusCircleOutlined,
-  SearchOutlined,
   UnorderedListOutlined,
   MenuOutlined,
   CloseOutlined,
@@ -40,9 +39,6 @@ function HeaderMenu() {
               </Menu.Item>
               <Menu.Item key="1" icon={<PlusCircleOutlined />}>
                 <Link to="/add_appointment">Add Appointments</Link>
-              </Menu.Item>
-              <Menu.Item key="2" icon={<SearchOutlined />}>
-                <Link to="/search_appointment">Search Appointments</Link>
               </Menu.Item>
               <Menu.Item key="3" icon={<UnorderedListOutlined />}>
                 <Link to="/list_appointment">List Appointments</Link>

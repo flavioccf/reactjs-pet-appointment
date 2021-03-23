@@ -15,18 +15,26 @@ const AppointmentComp = ({
   apt,
   setAppointments,
   myAppointments,
+  modalFunctions
 }: {
   apt: Appointment;
   setAppointments: Function;
   myAppointments: Array<Appointment>;
+  modalFunctions: any
 }) => {
   let scheduledDate = DateTime.fromFormat(apt.aptDate, "yyyy-MM-dd hh:mm");
+  console.log(modalFunctions);
   return (
     <>
       <List.Item
         actions={[
           <Tooltip title="Edit appointment">
-            <EditTwoTone />
+            <EditTwoTone onClick={() => {
+              if(modalFunctions) {
+                modalFunctions.openModal();
+                modalFunctions.setAppointmentModal(apt);
+              }
+            }}/>
           </Tooltip>,
           <Tooltip title="Delete appointment">
             <DeleteTwoTone

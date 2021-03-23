@@ -1,9 +1,8 @@
 import { Input, Select } from "antd";
-import { SortAscendingOutlined, SortDescendingOutlined } from "@ant-design/icons";
+import { SortAscendingOutlined, SortDescendingOutlined, SearchOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { SearchOptions } from "../interfaces/SearchOptions";
 import AppointmentApi from "../services/apt_api";
-import { Appointment } from "../interfaces/Appointment";
 
 const SearchAppointmentsComp = ({
     setMyAppointments
@@ -31,6 +30,7 @@ const SearchAppointmentsComp = ({
     return(
         <>
         <Input
+        prefix={<SearchOutlined />}
         addonAfter={
           <>
             <Select placeholder="Sort By" className="select-before"
@@ -71,7 +71,3 @@ const SearchAppointmentsComp = ({
 };
 
 export default SearchAppointmentsComp;
-
-function setSearchParam(arg0: (prevState: any) => any) {
-    throw new Error("Function not implemented.");
-}
